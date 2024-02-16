@@ -2,11 +2,15 @@
 @import url("./themes/dark.css");
 @import url("./themes/normal.css");
 
-
 body {
   margin: 0;
+
+}
+
+.app {
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--bg-color);
 }
 
 * {
