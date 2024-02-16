@@ -1,0 +1,21 @@
+@import url("./variables/global.css");
+@import url("./themes/dark.css");
+@import url("./themes/normal.css");
+
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input, button, textarea, select {
+  margin: 0;
+  font: inherit;
+}

@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { FormsListPage } from "@/pages/FormListPage";
+import { UseTheme } from "./theme/useTheme";
 
 const OwnProfilePage = lazy(() =>
   import("@/pages/OwnProfilePage").then((module) => ({
@@ -51,52 +52,57 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
+  const { theme, toggleTheme } = UseTheme();
+
   return (
     <>
-      <nav>
-        <NavLink
-          style={{ marginRight: "10px" }}
-          replace
-          to="/login"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-          }
-        >
-          Login
-        </NavLink>
+      <div className={`app ${theme}`}>
+        <button onClick={toggleTheme}>TOGGLE</button>
+        <nav>
+          <NavLink
+            style={{ marginRight: "10px" }}
+            replace
+            to="/login"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            Login
+          </NavLink>
 
-        <NavLink
-          to="/signup"
-          replace
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-          }
-        >
-          signup
-        </NavLink>
-      </nav>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/" element={<FormsListPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/me" element={<OwnProfilePage />} />
+          <NavLink
+            to="/signup"
+            replace
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            signup
+          </NavLink>
+        </nav>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<FormsListPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/me" element={<OwnProfilePage />} />
 
-          {/* <Route path="/forms/*" element={<FormsRoutes />} /> */}
+            {/* <Route path="/forms/*" element={<FormsRoutes />} /> */}
 
-          <Route path="/forms">
-            <Route path="edit" element={<FormConstructorPage />} />
-            <Route path="new" element={<FormConstructorPage />} />
-            <Route path=":formId" element={<FormPage />} />
-            <Route path="responses">
-              <Route index element={<FormResponsesPage />} />
-              <Route path=":responseId" element={<ResponsePage />} />
+            <Route path="/forms">
+              <Route path="edit" element={<FormConstructorPage />} />
+              <Route path="new" element={<FormConstructorPage />} />
+              <Route path=":formId" element={<FormPage />} />
+              <Route path="responses">
+                <Route index element={<FormResponsesPage />} />
+                <Route path=":responseId" element={<ResponsePage />} />
+              </Route>
             </Route>
-          </Route>
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </div>
     </>
   );
 }
