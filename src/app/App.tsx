@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { FormsListPage } from "@/pages/FormListPage";
 import { useTheme } from "@/app/providers/ThemeProvider";
-import { classNames } from "@/utils/classNames";
+import { classNames } from "@/shared/libs/classNames/classNames";
 
 const OwnProfilePage = lazy(() =>
   import("@/pages/OwnProfilePage").then((module) => ({
