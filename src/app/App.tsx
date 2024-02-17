@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { FormsListPage } from "@/pages/FormListPage";
-import { UseTheme } from "./theme/useTheme";
+import { useTheme } from "@/app/providers/ThemeProvider";
 import { classNames } from "@/utils/classNames";
 
 const OwnProfilePage = lazy(() =>
@@ -53,7 +53,7 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
-  const { theme, toggleTheme } = UseTheme();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
