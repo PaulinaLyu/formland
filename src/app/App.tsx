@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { FormsListPage } from "@/pages/FormListPage";
 import { UseTheme } from "./theme/useTheme";
+import { classNames } from "@/utils/classNames";
 
 const OwnProfilePage = lazy(() =>
   import("@/pages/OwnProfilePage").then((module) => ({
@@ -56,7 +57,7 @@ function App() {
 
   return (
     <>
-      <div className={`app ${theme}`}>
+      <div className={classNames("app", {}, [theme])}>
         <button onClick={toggleTheme}>TOGGLE</button>
         <nav>
           <NavLink
