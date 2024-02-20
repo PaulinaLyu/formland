@@ -7,6 +7,7 @@ import { SizeType } from 'antd/es/config-provider/SizeContext';
 
 interface InputWithLabelProps { 
     containerClassName?: string;
+    id: string;
     className?: string;
     placeholder?: string;
     label?: string;
@@ -17,12 +18,12 @@ interface InputWithLabelProps {
 }
 
 export const InputWithLabel = (props:InputWithLabelProps) => {
-   const  {className = '', placeholder= '', label = null, size='middle', containerClassName = '', value, onChange } = props;
+   const  {id, className = '', placeholder= '', label = null, size='middle', containerClassName = '', value, onChange } = props;
 
     return (
         <div className={classNames('',{},[containerClassName])}>
-            {label && <label className={style.Label}>{label}</label>}
-            <Input className={classNames('',{},[className])} size={size} placeholder={placeholder} value={value} onChange={onChange} />
+            {label && <label htmlFor={id} className={style.Label}>{label}</label>}
+            <Input id={id} className={classNames('',{},[className])} size={size} placeholder={placeholder} value={value} onChange={onChange} />
         </div>
     )
 }
