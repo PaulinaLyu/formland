@@ -1,1 +1,1 @@
-export { InputWithLabel } from "./ui/InputWithLabel"
+export { Input } from "./ui/Input";

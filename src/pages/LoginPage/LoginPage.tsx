@@ -1,5 +1,6 @@
-import { InputWithLabel } from "@/shared/Input";
+import { Input } from "@/shared/Input";
 
 export const LoginPage = () => {
-  return <InputWithLabel id='test' value={"2123"} onChange={() => {}} label="123"/>;
+  return <> <Input id='test' value={"2123"} onChange={() => {}} label="123"/>  
+  </>;
 };

@@ -4,6 +4,9 @@ import { FormsListPage } from "@/pages/FormListPage";
 import { useTheme } from "@/app/providers/ThemeProvider";
 import { classNames } from "@/shared/libs/classNames/classNames";
 
+import { Header } from "@/widgets/Header";
+
+
 const OwnProfilePage = lazy(() =>
   import("@/pages/OwnProfilePage").then((module) => ({
     default: module.OwnProfilePage,
@@ -53,34 +56,17 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
+
 
   return (
     <>
-      <div className={classNames("app", {}, [theme])}>
-        <button onClick={toggleTheme}>TOGGLE</button>
-        <nav>
-          <NavLink
-            style={{ marginRight: "10px" }}
-            replace
-            to="/login"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active" : ""
-            }
-          >
-            Login
-          </NavLink>
+      {/* <div className={classNames("app", {}, [theme])}> */}
 
-          <NavLink
-            to="/signup"
-            replace
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active" : ""
-            }
-          >
-            signup
-          </NavLink>
-        </nav>
+ 
+       <Header />
+    <main>
+      <div className="mx-auto max-w-7xl py-4 sm:px-6 lg:px-8">
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<FormsListPage />} />
@@ -104,6 +90,9 @@ function App() {
           </Routes>
         </Suspense>
       </div>
+    </main>
+
+      {/* </div> */}
     </>
   );
 }

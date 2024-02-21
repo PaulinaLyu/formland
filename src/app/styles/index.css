@@ -2,6 +2,10 @@
 @import url("./themes/dark.css");
 @import url("./themes/normal.css");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
 
