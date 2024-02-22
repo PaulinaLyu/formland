@@ -1,7 +1,7 @@
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { navigation } from "./navigationMock";
 import { NavLink, useLocation  } from 'react-router-dom';
-import { joinClassNames } from '@/shared/libs';
+import { classNames } from '@/shared/libs';
 import { Switch } from '@/shared/Switch';
 import { Moon, Sun } from 'react-feather';
 
@@ -11,7 +11,7 @@ export const Header = () => {
   let location = useLocation();
     return (
       <>
-      <div className="border-b-5 border-gray-900 min-h-full">
+      <div className="dark:bg-white-800 border-b-5 border-gray-900 min-h-full">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
@@ -22,15 +22,7 @@ export const Header = () => {
                     key={item.name}
                     to={item.href}
                     className={
-                      joinClassNames(
-                      location.pathname === item.href
-                        ? "text-indigo-400"
-                        : "font-medium text-black-400",
-                      "px-3 py-5 text-sm font-medium"
-                    )
-                  
-                  }
-                    aria-current={location.pathname === item.href ? "page" : undefined}
+                      classNames("px-3 py-5 text-sm font-medium",{"text-indigo-400": location.pathname === item.href, "font-medium text-black-400": location.pathname !== item.href },[])}
                   >
                     {item.name}
                   </NavLink>
