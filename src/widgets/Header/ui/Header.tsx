@@ -38,7 +38,7 @@ export const Header = () => {
               </div>
             </div>
           </div>
-          <Switch checkedChildren={<Sun width='16' height='16' />} unCheckedChildren={<Moon width='16' height='16' />} isChecked={theme === "normal"} onChange={toggleTheme} />
+          <Switch checkedChildren={<Moon width='16' height='16' />} unCheckedChildren={<Sun width='16' height='16' />} isChecked={theme === "normal"} onChange={toggleTheme} />
         </div>
       </div>
     </div>

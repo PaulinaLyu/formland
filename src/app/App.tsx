@@ -61,7 +61,7 @@ function App() {
 
   return (
     <>
-      {/* <div className={classNames("app", {}, [theme])}> */}
+      <div className={classNames("app", {}, [theme])}>
 
  
        <Header />
@@ -92,7 +92,7 @@ function App() {
       </div>
     </main>
 
-      {/* </div> */}
+      </div>
     </>
   );
 }
